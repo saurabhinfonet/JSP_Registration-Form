@@ -2,7 +2,7 @@
 
 <% 
     final String jdbcdriver="com.mysql.jdbc.Driver";
-    final String url="jdbc:mysql://localhost/test";
+    final String url="jdbc:mysql://localhost/database_name";
     final String user="admin";
     final String pass="deddenurphy";
     
@@ -22,7 +22,7 @@
         
         stmt = con.createStatement();
         
-        query = "SELECT * FROM jspAjax";
+        query = "SELECT * FROM register";
         result = stmt.executeQuery(query);
         
         if(!result.next()){
@@ -32,8 +32,6 @@
             do{
                 JSONObject obj = new JSONObject();
                 obj.put("FirstName",result.getString("FirstName"));
-                obj.put("LastName",result.getString("LastName"));
-                obj.put("Location",result.getString("Location"));
                 array.put(obj.toString());
             }while(result.next());
             out.print(array);
